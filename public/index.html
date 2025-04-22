@@ -20,7 +20,8 @@
             {
                 method : "GET",
             }
-            const response = await fetch("http://localhost:1000/tasks",API_method_name);
+           // const response = await fetch("http://localhost:1000/tasks",API_method_name);//ERROR blocked by CORS policy
+            const response = await fetch("https://expresstasklistnodbnopostman-1.onrender.com/tasks",API_method_name);
             const body = await response.json();
             taskElement.innerHTML = '';//intializing
             body.TaskList.forEach((elem,arrayIndex) => //tasks = [] an array
@@ -62,7 +63,9 @@
                 headers : {"Content-Type":"application/json"},
                 body : JSON.stringify({taskItem:input.value,}),
             };
-            const response = await fetch("http://localhost:1000/task",pack_BODY_HEADER_in_POST_API);
+            //const response = await fetch("http://localhost:1000/task",pack_BODY_HEADER_in_POST_API);//ERROR blocked by CORS policy
+            const response = await fetch("https://expresstasklistnodbnopostman-1.onrender.com/task",pack_BODY_HEADER_in_POST_API);
+            
             show_GET();
         } 
 
@@ -75,7 +78,8 @@
                 body : JSON.stringify({taskItem:input.value,}),
             };
             //console.log(`http://localhost:1000/task/${arrayIdx}`);//WORKS
-            const response = await fetch(`http://localhost:1000/task/${arrayIdx}`,pack_BODY_HEADER_in_PUT_API);
+           // const response = await fetch(`http://localhost:1000/task/${arrayIdx}`,pack_BODY_HEADER_in_PUT_API);//ERROR blocked by CORS policy
+            const response = await fetch(`https://expresstasklistnodbnopostman-1.onrender.com/task/${arrayIdx}`,pack_BODY_HEADER_in_PUT_API);
             show_GET();//IMPORTANT to add this else it doesnt update
         };
         
@@ -86,7 +90,8 @@
                 method : "DELETE",
             }
             //console.log(`http://localhost:1000/task/${arrayIdx}`);//WORKS
-            const response = await fetch(`http://localhost:1000/task/${arrayIdx}`,API_method_name);
+            //const response = await fetch(`http://localhost:1000/task/${arrayIdx}`,API_method_name);//ERROR blocked by CORS policy
+            const response = await fetch(`https://expresstasklistnodbnopostman-1.onrender.com/task/${arrayIdx}`,API_method_name);
             show_GET();//IMPORTANT to add this else it doesnt disappear
         };
 
